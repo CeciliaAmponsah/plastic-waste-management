@@ -5,7 +5,7 @@ const PlasticDealers = () => {
   return (
     <div className="grid lg:grid-cols-2 mt-10 gap-10 w-10/12 mx-auto place-content-center">
       <Link href="plastic-dealers/1">
-        <div className="flex flex-col items-center bg-white rounded-lg border  shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <div className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
           <img
             className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
             src="/images/sintex-Ghana.jpg"
@@ -24,7 +24,7 @@ const PlasticDealers = () => {
         </div>
       </Link>
       <Link href="plastic-dealers/1">
-        <div className="flex flex-col items-center bg-white rounded-lg border  shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <div className="flex flex-col items-center bg-white rounded-lg border  shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
           <img
             className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
             src="/images/plastic-2.jpg"
@@ -45,7 +45,7 @@ const PlasticDealers = () => {
         </div>
       </Link>
       <Link href="plastic-dealers/1">
-        <div className="flex flex-col items-center bg-white rounded-lg border  shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <div className="flex flex-col items-center bg-white rounded-lg border  shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
           <img
             className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
             src="/images/landpic2.jpg"
@@ -65,7 +65,7 @@ const PlasticDealers = () => {
         </div>
       </Link>
       <Link href="plastic-dealers/1">
-        <div className="flex flex-col items-center bg-white rounded-lg border  shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <div className="flex flex-col items-center bg-white rounded-lg border  shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
           <img
             className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
             src="/images/plastic-3.jpg"
@@ -88,7 +88,7 @@ const PlasticDealers = () => {
         </div>
       </Link>
       <Link href="plastic-dealers/1">
-        <div className="flex flex-col items-center bg-white rounded-lg border  shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <div className="flex flex-col items-center bg-white rounded-lg border  shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
           <img
             className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
             src="/images/plastic-land2.jpg"
@@ -105,7 +105,7 @@ const PlasticDealers = () => {
         </div>
       </Link>
       <Link href="plastic-dealers/1">
-        <div className="flex flex-col items-center bg-white rounded-lg border  shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <div className="flex flex-col items-center bg-white rounded-lg border  shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
           <img
             className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
             src="/images/plastic-land.jpg"

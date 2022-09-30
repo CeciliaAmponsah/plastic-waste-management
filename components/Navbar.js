@@ -55,6 +55,16 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link href="/about">
+                <a
+                  href="aboutu"
+                  className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  About Us
+                </a>
+              </Link>
+            </li>
+            <li>
               <Link href="/login">
                 <a
                   href="plastic-dealers"
@@ -65,12 +75,31 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link href="/logout">
+                <a
+                  href="plastic-dealers"
+                  className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  Logout
+                </a>
+              </Link>
+            </li>
+            <li>
               <Link href={"/register"}>
                 <a
                   href="logout"
                   className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
                   Register
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/contactus">
+                <a
+                  className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  contactUs
                 </a>
               </Link>
             </li>
