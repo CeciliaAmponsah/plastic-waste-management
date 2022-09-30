@@ -9,7 +9,7 @@ const ContactUs = () => {
           <h5 class="text-xl font-medium text-gray-900 dark:text-white">
             Contact Us in our platform
           </h5>
-          <h1>Call Us on [ 0240519461, 0243456720 ]</h1>
+          <h1 className="text-2xl">Call Us on [ 0240519461, 0243456720 ]</h1>
           <div>
             <div className="w-full">
               <label
@@ -54,7 +54,7 @@ const ContactUs = () => {
               name="email"
               id="email"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              placeholder="name@company.com"
+              placeholder="amponsahcecilia@gmail.com"
               required=""
             />
           </div>

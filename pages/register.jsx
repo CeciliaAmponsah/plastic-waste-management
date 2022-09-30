@@ -1,9 +1,10 @@
 import Link from "next/link";
 import React from "react";
 
+
 const plasticDealers = () => {
   return (
-    <div className="min-h-[calc(100vh_-_64px)] flex justify-center items-center">
+    <div className="min-h-[calc(100vh_-_64px)] flex justify-center items-center p-7">
       <div class="p-4 w-full max-w-3xl m-5 lg:m-0 bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
         <form class="space-y-6" action="#">
           <h5 class="text-xl font-medium text-gray-900 dark:text-white">

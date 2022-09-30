@@ -7,7 +7,7 @@ const About = () => {
       <div className="">
         <h1 className="text-center font-extrabold text-5xl p-5">ABOUT US</h1>
         <div className="space-y-5 ">
-          <p className="text-2xl font-style: italic">
+          <p className="text-xl font-style: italic">
             With the increasing rate at which our soil and water bodies are
             being poluted with various plastic wastes killing our aqua system
             and land for productive agriculture, the need has risen to find the
@@ -25,7 +25,7 @@ const About = () => {
           <h2 className="text-center font-extrabold text-5xl p-5 font-style: italic">
             Our mission
           </h2>
-          <p className="text-2xl font-style: italic">
+          <p className="text-xl font-style: italic">
             To deliver operationally efficient, cost effective and affordable
             services and products, Through application of appropriate technology
             and innovation, to our cherished clients, By creating wealth through
@@ -40,7 +40,7 @@ const About = () => {
           <h3 className="text-center font-extrabold text-5xl p-5 font-style: italic">
             Our Vision
           </h3>
-          <p className="text-2xl font-style: italic">
+          <p className="text-xl font-style: italic">
             To be the leading integrated waste management and resource recovery
             company Improving Ghana’s environment and public health.We are
             passionate about the environment and kindly seek your assistance to

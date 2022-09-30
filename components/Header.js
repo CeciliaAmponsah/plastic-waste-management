@@ -5,7 +5,7 @@ import bgImage from "../public/images/land-3.jpg";
 const Header = () => {
   return (
     <div
-      className="bg-header-image h-screen"
+      className="bg-header-image h-[calc(100vh_-_64px)] flex justify-center items-center"
       style={{ backgroundImage: "../public/images/land-3.jpg" }}
     >
       {/* <Image
@@ -16,13 +16,16 @@ const Header = () => {
         objectFit="cover"
       /> */}
       <div
-        className="absolute bottom-1/2 items-center-1/2 font-style: italic
+        className="absolute max-w-4xl  font-style: italic
  "
       >
-        <h1 className="text-gray-900 text-5xl font-extrabold  p-7 text-center">
+        <div className="mx-auto w-40">
+          <img src="/images/logo.png" width="200" height="200" />
+        </div>
+        <h1 className="text-gray-900 text-7xl font-extrabold  text-center hover:bg-white cursor-pointer">
           CiliaFred-Plastic Management
         </h1>
-        <p className="text-gray-900 text-5xl font-extrabold text-center">
+        <p className="text-gray-900 text-5xl font-extrabold  text-center leading-snug  hover:bg-green-600 cursor-pointer">
           we are excellent problem solvers for both plastic-dealers and people
           with plastic-waste
         </p>
