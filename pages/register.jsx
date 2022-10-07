@@ -1,15 +1,67 @@
 import Link from "next/link";
-import React from "react";
-
+import React, { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 const plasticDealers = () => {
+  const [data, setData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [error, setError] = useState("");
+  const router = useRouter();
+
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { firstName, lastName, email, password, confirmPassword } = data;
+
+    if (
+      firstName == "" &&
+      lastName == "" &&
+      email == "" &&
+      password == "" &&
+      confirmPassword == ""
+    ) {
+      setError("please provide all the information");
+      return;
+    }
+
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      setError("please enter a valid email");
+      return;
+    }
+    if (password !== confirmPassword) {
+      setError("password do not match");
+      return;
+    }
+
+    try {
+       await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/register`,
+        data
+      );
+      router.push("/")
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   return (
     <div className="min-h-[calc(100vh_-_64px)] flex justify-center items-center p-7">
       <div class="p-4 w-full max-w-3xl m-5 lg:m-0 bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form class="space-y-6" action="#">
+        <form onSubmit={handleSubmit} className="space-y-6" action="#">
           <h5 class="text-xl font-medium text-gray-900 dark:text-white">
             Register in to our platform
           </h5>
+          {error && <p className="text-red-700">{error}</p>}
+
           <div className="flex flex-col md:flex-row gap-5">
             <div className="w-full">
               <label
@@ -20,8 +72,10 @@ const plasticDealers = () => {
               </label>
               <input
                 type="text"
-                name="firstname"
-                id="firstname"
+                name="firstName"
+                id="firstName"
+                value={data.firstName}
+                onChange={handleChange}
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 placeholder="Cecilia"
                 required=""
@@ -29,15 +83,17 @@ const plasticDealers = () => {
             </div>
             <div className="w-full">
               <label
-                for="lastname"
+                for="lastName"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Last Name
               </label>
               <input
                 type="text"
-                name="lastname"
-                id="lastname"
+                name="lastName"
+                id="lastName"
+                value={data.lastName}
+                onChange={handleChange}
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 placeholder="Amponsah"
                 required=""
@@ -55,8 +111,10 @@ const plasticDealers = () => {
               type="email"
               name="email"
               id="email"
+              value={data.email}
+              onChange={handleChange}
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              placeholder="name@company.com"
+              placeholder=""
               required=""
             />
           </div>
@@ -71,6 +129,26 @@ const plasticDealers = () => {
               type="password"
               name="password"
               id="password"
+              value={data.password}
+              onChange={handleChange}
+              placeholder="••••••••"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              required=""
+            />
+          </div>
+          <div>
+            <label
+              for="confirmPassword"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              confirm password
+            </label>
+            <input
+              type="confirmPassword"
+              name="confirmPassword"
+              id="confirmPassword"
+              value={data.confirmPassword}
+              onChange={handleChange}
               placeholder="••••••••"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               required=""
@@ -137,162 +215,6 @@ const plasticDealers = () => {
         </form>
       </div>
     </div>
-    // <form className="bg-[#4C5B00] py-9 px-8">
-
-    //   <div className="grid gap-6 mb-6 md:grid-cols-2">
-    //     <div>
-    //       <label
-    //         for="first_name"
-    //         className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-    //       >
-    //         First name
-    //       </label>
-    //       <input
-    //         type="text"
-    //         id="first_name"
-    //         className="bg-[#11130E] text-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    //         placeholder="Cecilia"
-    //         required=""
-    //       />
-    //     </div>
-    //     <div>
-    //       <label
-    //         for="last_name"
-    //         className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-    //       >
-    //         Last name
-    //       </label>
-    //       <input
-    //         type="text"
-    //         id="last_name"
-    //         className="bg-[#11130E] text-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    //         placeholder="Amponsah"
-    //         required=""
-    //       />
-    //     </div>
-    //     <div>
-    //       <label
-    //         for="company"
-    //         className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-    //       >
-    //         Company
-    //       </label>
-    //       <input
-    //         type="text"
-    //         id="company"
-    //         className="bg-[#11130E] text-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    //         placeholder="CF-PM"
-    //         required=""
-    //       />
-    //     </div>
-    //     <div>
-    //       <label
-    //         for="phone"
-    //         className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-    //       >
-    //         Phone number
-    //       </label>
-    //       <input
-    //         type="tel"
-    //         id="phone"
-    //         className="bg-[#11130E] text-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    //         placeholder="0540-222-11-0"
-    //         pattern="[0-9]{4}-[0-9]{3}-[0-9]{2}-[0-9]{1}"
-    //         required=""
-    //       />
-    //     </div>
-    //   </div>
-    //   <div className="mb-6">
-    //     <label
-    //       for="email"
-    //       className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-    //     >
-    //       Email address
-    //     </label>
-    //     <input
-    //       type="email"
-    //       id="email"
-    //       className="bg-[#11130E] text-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    //       placeholder="starcy@gmail.com"
-    //       required=""
-    //     />
-    //   </div>
-    //   <div className="mb-6">
-    //     <label
-    //       for="password"
-    //       className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-    //     >
-    //       Password
-    //     </label>
-    //     <input
-    //       type="password"
-    //       id="password"
-    //       className="bg-[#11130E] text-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    //       placeholder="•••••••••"
-    //       required=""
-    //     />
-    //   </div>
-    //   <div className="mb-6">
-    //     <label
-    //       for="confirm_password"
-    //       className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-    //     >
-    //       Confirm password
-    //     </label>
-    //     <input
-    //       type="password"
-    //       id="confirm_password"
-    //       className="bg-[#11130E] text-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    //       placeholder="•••••••••"
-    //       required=""
-    //     />
-    //   </div>
-    //   <div>
-    //     <label
-    //       for="register"
-    //       className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
-    //     >
-    //       Register As:
-    //     </label>
-    //     <select
-    //       id="register"
-    //       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    //     >
-    //       <option>Plastic Dealer</option>
-    //       <option>People with plastic waste</option>
-    //     </select>
-    //   </div>
-    //   <div className="flex items-start mb-6">
-    //     <div className="flex items-center h-5">
-    //       <input
-    //         id="remember"
-    //         type="checkbox"
-    //         value=""
-    //         className="w-4 h-4 bg-[#11130E] rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-    //         required=""
-    //       />
-    //     </div>
-    //     <label
-    //       for="remember"
-    //       className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-400"
-    //     >
-    //       I agree with the{" "}
-    //       <a
-    //         href="#"
-    //         className="text-blue-600 hover:underline dark:text-blue-500"
-    //       >
-    //         terms and conditions
-    //       </a>
-    //       .
-    //     </label>
-    //   </div>
-    //   <button
-    //     type="submit"
-    //     className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-    //   >
-    //     Submit
-    //   </button>
-    // </form>
   );
 };
 

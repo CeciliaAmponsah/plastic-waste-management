@@ -1,13 +1,36 @@
 import React from "react";
 import Image from "next/image";
 import bgImage from "../../public/images/landpic-2.jpg";
+import { getPlastics } from "../../utils/getPlastics";
 
-const PlasticDealerDetail = () => {
+export async function getStaticPaths() {
+  const res = await getPlastics();
+
+  const paths = res.map((plastic) => ({
+    params: { dealerId: String(plastic._id) },
+  }));
+  return {
+    paths,
+    fallback: true,
+  };
+}
+export async function getStaticProps(context) {
+  const plastic = await getPlastics(context.params.plasticId);
+  return {
+    props: {
+      plastic,
+    },
+  };
+}
+
+const PlasticDealerDetails = ({ plastic }) => {
   return (
     <section className="max-w-5xl mx-10 lg:mx-auto py-10 space-y-5 bg-white p-10 mt-5 rounded-md">
       <h1 className="text-3xl text-center mb-10 font-semibold">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, dolore?
       </h1>
+      <hr />
+      {plastic.title}
       <div className="h-40 md:h-60 lg:h-96 overflow-hidden bg-slate-400">
         <Image
           src={bgImage}
@@ -82,4 +105,4 @@ const PlasticDealerDetail = () => {
   );
 };
 
-export default PlasticDealerDetail;
+export default PlasticDealerDetails;

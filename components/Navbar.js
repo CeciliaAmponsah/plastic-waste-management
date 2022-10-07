@@ -1,8 +1,11 @@
 import React from "react";
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
 import { BiWorld } from "react-icons/bi";
 
 const Navbar = () => {
+  const { status } = useSession();
+
   return (
     <div className="shadow-md">
       <nav className="p-3 bg-gray-50 rounded border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -24,7 +27,7 @@ const Navbar = () => {
             <span className="sr-only">Open main menu</span>
             <svg
               className="w-6 h-6"
-              aria-hidden="true" 
+              aria-hidden="true"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -72,22 +75,21 @@ const Navbar = () => {
               </li>
               <li>
                 <Link href="/login">
-                  <a
-                    href="plastic-dealers"
-                    className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                  >
-                    Login
-                  </a>
+                  {status === "authenticated" ? (
+                    <button onClick={() => signOut({ callbackUrl: "/" })}>
+                      Logout
+                    </button>
+                  ) : (
+                    <Link
+                      href="/plastic-dealers"
+                      className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                    >
+                      Login
+                    </Link>
+                  )}
                 </Link>
               </li>
-              <li>
-                <button
-                  href="plastic-dealers"
-                  className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >
-                  Logout
-                </button>
-              </li>
+
               <li>
                 <Link href={"/register"}>
                   <a
@@ -101,7 +103,7 @@ const Navbar = () => {
               <li>
                 <Link href="/contactus">
                   <a className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                    contactUs
+                    ContactUs
                   </a>
                 </Link>
               </li>

@@ -1,28 +1,54 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { getPlastics } from "../../utils/getPlastics";
 
-const PlasticDealers = () => {
+export async function getStaticProps() {
+  const plastics = await getPlastics();
+
+  return {
+    props: {
+      plastics,
+    },
+  };
+}
+
+const PlasticDealers = ({ plastics }) => {
+  const { status } = useSession();
+  const router = useRouter();
+
+  console.log(plastics);
+
+  useEffect(() => {
+    if (status !== "authenticated") {
+      router.push("/login");
+    }
+  }, [status]);
+
   return (
     <div className="grid lg:grid-cols-2 mt-10 gap-10 w-10/12 mx-auto place-content-center">
-      <Link href="plastic-dealers/1">
-        <div className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
-          <img
-            className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-            src="/images/sintex-Ghana.jpg"
-            alt=""
-          />
-          <div className="flex flex-col justify-between p-4 leading-normal">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Jekora Ventures
-            </h5>
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              The first and only Ghanaian waste management company offering
-              recycling services to its clients along with a solid waste source
-              segregation programme.
-            </p>
+      {plastics.map((plastic) => (
+        <Link href={`plastic-dealers/${plastic._id}`}>
+          <div className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
+            <img
+              className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+              src="/images/sintex-Ghana.jpg"
+              alt=""
+            />
+            <div className="flex flex-col justify-between p-4 leading-normal">
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                Jekora Ventures
+              </h5>
+              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                The first and only Ghanaian waste management company offering
+                recycling services to its clients along with a solid waste
+                source segregation programme.
+              </p>
+            </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      ))}
       <Link href="plastic-dealers/1">
         <div className="flex flex-col items-center bg-white rounded-lg border  shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
           <img
