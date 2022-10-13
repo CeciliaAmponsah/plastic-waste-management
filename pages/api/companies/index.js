@@ -1,27 +1,26 @@
 import db from "../../../lib/dbConnect";
-import Plastic from "../../../models/plastic";
+import Company from "../../../models/company";
+import bcrypt from "bcryptjs";
 
 export default async function handler(req, res) {
   if (req.method == "GET") {
     await db.connect();
 
-    const plastics = await Plastic.find({});
+    const companies = await Company.find({});
     await db.disconnect();
-    res.status(200).json({ plastics });
+    res.status(200).json({ companies });
   } else if (req.method == "POST") {
     await db.connect();
 
-    const { companyName, location, phoneNumber, companyEmail } = req.body;
+    const hashedPassword = await bcrypt.hash(req.body.password, 12);
 
-    const plastic = await Plastic.create({
-      companyName,
-      location,
-      phoneNumber,
-      companyEmail,
+    const company = await Company.create({
+      ...req.body,
+      password: hashedPassword,
     });
 
     await db.disconnect();
-    res.status(201).json({ plastic });
+    res.status(201).json({ company });
   } else {
     res.status(405).json({ error: "only plastic and GET methods are allowed" });
   }

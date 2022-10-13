@@ -9,7 +9,7 @@ const ContactUs = () => {
           <h5 class="text-xl font-medium text-gray-900 dark:text-white">
             Contact Us in our platform
           </h5>
-          <h1 className="text-2xl">Call Us on [ 0240519461, 0243456720 ]</h1>
+
           <div>
             <div className="w-full">
               <label
@@ -119,6 +119,7 @@ const ContactUs = () => {
         >
           Submit
         </button>
+        <h1 className="text-md font-bold text-gray-700 flex justify-center">Call Us on [ 0240519461, 0243456720 ]</h1>
       </div>
     </div>
   );

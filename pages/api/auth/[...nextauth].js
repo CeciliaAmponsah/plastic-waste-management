@@ -4,6 +4,7 @@ import db from "../../../lib/dbConnect";
 import User from "../../../models/user";
 import bcrypt from "bcryptjs";
 import { signIn } from "next-auth/react";
+import Company from "../../../models/company";
 
 export default NextAuth({
   providers: [
@@ -26,11 +27,19 @@ export default NextAuth({
         //connect to database
         await db.connect();
 
-        // find user
-        const user = await User.findOne({
-          email: credentials.email,
-        });
+        let user;
 
+        // find user
+        if (credentials.loginAs === "user") {
+          user = await User.findOne({
+            email: credentials.email,
+          });
+        } else if (credentials.loginAs === "plastic-dealer") {
+          console.log(credentials);
+          user = await Company.findOne({ email: credentials.email });
+        }
+
+        console.log(user);
         // disconnect database
         await db.disconnect();
 
@@ -49,6 +58,6 @@ export default NextAuth({
   ],
   pages: {
     signIn: "/login",
-    error: "/login"
+    error: "/login",
   },
 });

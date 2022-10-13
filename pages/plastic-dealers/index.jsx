@@ -2,23 +2,22 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { getPlastics } from "../../utils/getPlastics";
+import { getCompanies } from "../../utils/getCompanies";
+import Image from "next/image";
 
 export async function getStaticProps() {
-  const plastics = await getPlastics();
+  const companies = await getCompanies();
 
   return {
     props: {
-      plastics,
+      companies,
     },
   };
 }
 
-const PlasticDealers = ({ plastics }) => {
+const PlasticDealers = ({ companies }) => {
   const { status } = useSession();
   const router = useRouter();
-
-  console.log(plastics);
 
   useEffect(() => {
     if (status !== "authenticated") {
@@ -28,27 +27,28 @@ const PlasticDealers = ({ plastics }) => {
 
   return (
     <div className="grid lg:grid-cols-2 mt-10 gap-10 w-10/12 mx-auto place-content-center">
-      {plastics.map((plastic) => (
-        <Link href={`plastic-dealers/${plastic._id}`}>
+      {companies.map((company) => (
+        <Link href={`plastic-dealers/${company._id}`}>
           <div className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
-            <img
+            <Image
               className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-              src="/images/sintex-Ghana.jpg"
+              src={company.imageUrl}
+              height="3000"
+              width="3000"
               alt=""
             />
             <div className="flex flex-col justify-between p-4 leading-normal">
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Jekora Ventures
+                {company.name}
               </h5>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                The first and only Ghanaian waste management company offering
-                recycling services to its clients along with a solid waste
-                source segregation programme.
+                {company.details}
               </p>
             </div>
           </div>
         </Link>
       ))}
+      
       <Link href="plastic-dealers/1">
         <div className="flex flex-col items-center bg-white rounded-lg border  shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
           <img

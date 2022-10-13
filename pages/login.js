@@ -7,8 +7,9 @@ const login = () => {
   const [data, setData] = useState({
     email: "",
     password: "",
+    loginAs: "",
   });
-  const router = useRouter()
+  const router = useRouter();
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -19,24 +20,43 @@ const login = () => {
     const result = await signIn("credentials", {
       email: data.email,
       password: data.password,
+      loginAs: data.loginAs,
       redirect: false,
       callbackUrl: "/",
     });
     if (result.error) {
       setError(result.error);
     } else {
-      router.push( "/");
+      router.push("/");
     }
-    
   };
   return (
     <div className="min-h-[calc(100vh_-_64px)] flex justify-center items-center">
       <div class="p-4 w-full max-w-lg bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form onSubmit={handleSubmit} class="space-y-6" action="#">
-          {error && <p>{error}</p>}
+        <form onSubmit={handleSubmit} class="space-y-3" action="#">
           <h5 class="text-xl font-medium text-gray-900 dark:text-white">
             Sign in to our platform
           </h5>
+          {error && <p className="text-red-500 text-center">{error}</p>}
+
+          <div>
+            <label
+              htmlFor="loginAs"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+            >
+              Login As
+            </label>
+            <select
+              id="loginAs"
+              name="loginAs"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              onChange={handleChange}
+            >
+              <option>------------Select your category------------</option>
+              <option value={"plastic-dealer"}>Plastic Dealer</option>
+              <option value={"user"}>People with plastic waste</option>
+            </select>
+          </div>
           <div>
             <label
               for="email"
@@ -51,7 +71,7 @@ const login = () => {
               value={data.email}
               onChange={handleChange}
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              placeholder="/"
+              placeholder="email"
               required=""
             />
           </div>

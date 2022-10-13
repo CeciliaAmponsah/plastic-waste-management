@@ -12,8 +12,8 @@ const Navbar = () => {
         <div className="container flex flex-wrap justify-between items-center mx-auto">
           <a href="#" className="flex items-center">
             <img src="" className="mr-3 h-6 sm:h-10" alt="" />
-            <BiWorld className="text-4xl flex-1 text-gray-900 hover:bg-green-900 cursor-pointer" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white hover:bg-green-900 cursor-pointer">
+            <BiWorld className="text-4xl flex-1 text-gray-900 cursor-pointer" />
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white  cursor-pointer">
               CF-PM
             </span>
           </a>
