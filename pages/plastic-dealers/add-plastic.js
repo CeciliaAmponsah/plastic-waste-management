@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-const Addplastic = () => {
+const AddPlastic = () => {
   const [data, setData] = useState({
     title: "",
     body: "",
@@ -57,4 +57,4 @@ const Addplastic = () => {
   );
 };
 
-export default Addplastic;
+export default AddPlastic;

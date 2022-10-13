@@ -20,7 +20,7 @@ const Header = () => {
  "
       >
         <div className="mx-auto w-40">
-          <img src="/images/logo.png" width="200" height="200" />
+          <Image src="/images/logo.png" width="200" height="200" />
         </div>
         <h1 className="text-gray-900 text-7xl font-extrabold  text-center  cursor-pointer">
           Cidrick-Plastic Management

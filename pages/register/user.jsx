@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-const plasticDealers = () => {
+const PlasticDealers = () => {
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
@@ -178,4 +178,4 @@ const plasticDealers = () => {
   );
 };
 
-export default plasticDealers;
+export default PlasticDealers;
