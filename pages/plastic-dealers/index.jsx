@@ -33,8 +33,8 @@ const PlasticDealers = ({ companies }) => {
             <Image
               className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
               src={company.imageUrl}
-              height="3000"
-              width="3000"
+              height="2000"
+              width="2000"
               alt=""
             />
             <div className="flex flex-col justify-between p-4 leading-normal">

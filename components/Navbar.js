@@ -14,7 +14,7 @@ const Navbar = () => {
             <img src="" className="mr-3 h-6 sm:h-10" alt="" />
             <BiWorld className="text-4xl flex-1 text-gray-900 cursor-pointer" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white  cursor-pointer">
-              CF-PM
+              Cidrick-PM
             </span>
           </a>
           <button

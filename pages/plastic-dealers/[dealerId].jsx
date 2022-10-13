@@ -3,19 +3,9 @@ import Image from "next/image";
 import bgImage from "../../public/images/landpic-2.jpg";
 import { getCompanies } from "../../utils/getCompanies";
 
-export async function getStaticPaths() {
-  const res = await getCompanies();
 
-  const paths = res.map((plastic) => ({
-    params: { dealerId: String(plastic._id) },
-  }));
 
-  return {
-    paths,
-    fallback: true,
-  };
-}
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const company = await getCompanies(context.params.companyId);
 
   return {

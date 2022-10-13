@@ -11,8 +11,8 @@ const About = () => {
             With the increasing rate at which our soil and water bodies are
             being poluted with various plastic wastes killing our aqua system
             and land for productive agriculture, the need has risen to find the
-            safest and effective way of disposing our plastic waste. CiliaFred
-            Plastic Management seeks to be thebridge between plastic users and
+            safest and effective way of disposing our plastic waste. Cidrick
+            Plastic Management seeks to be the bridge between plastic users and
             it disposition. We seek to find a safe way of collecting used
             plastics which it users have no more use of to put recycle and
             refine them into other useful products which will not only save the

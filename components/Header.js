@@ -23,7 +23,7 @@ const Header = () => {
           <img src="/images/logo.png" width="200" height="200" />
         </div>
         <h1 className="text-gray-900 text-7xl font-extrabold  text-center  cursor-pointer">
-          CiliaFred-Plastic Management
+          Cidrick-Plastic Management
         </h1>
         <p className="text-gray-900 text-5xl font-extrabold  text-center leading-snug  cursor-pointer">
           we are excellent problem solvers for both plastic-dealers and people
