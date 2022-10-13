@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { getCompanies } from "../../utils/getCompanies";
 import Image from "next/image";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const companies = await getCompanies();
 
   return {
