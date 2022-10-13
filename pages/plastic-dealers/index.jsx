@@ -27,28 +27,30 @@ const PlasticDealers = ({ companies }) => {
 
   return (
     <div className="grid lg:grid-cols-2 mt-10 gap-10 w-10/12 mx-auto place-content-center">
-      {companies.map((company) => (
-        <Link href={`plastic-dealers/${company._id}`}>
-          <div className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
-            <Image
-              className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-              src={company.imageUrl}
-              height="2000"
-              width="2000"
-              alt=""
-            />
-            <div className="flex flex-col justify-between p-4 leading-normal">
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {company.name}
-              </h5>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                {company.details}
-              </p>
+      {companies.map((company, idx) => (
+        <React.Fragment key={idx}>
+          <Link href={`plastic-dealers/${company._id}`}>
+            <div className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
+              <Image
+                className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                src={company.imageUrl}
+                height="2000"
+                width="2000"
+                alt=""
+              />
+              <div className="flex flex-col justify-between p-4 leading-normal">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  {company.name}
+                </h5>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  {company.details}
+                </p>
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </React.Fragment>
       ))}
-      
+
       <Link href="plastic-dealers/1">
         <div className="flex flex-col items-center bg-white rounded-lg border  shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
           <img

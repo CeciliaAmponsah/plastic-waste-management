@@ -10,13 +10,13 @@ const Navbar = () => {
     <div className="shadow-md">
       <nav className="p-3 bg-gray-50 rounded border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div className="container flex flex-wrap justify-between items-center mx-auto">
-          <a href="#" className="flex items-center">
+          <div className="flex items-center">
             <img src="" className="mr-3 h-6 sm:h-10" alt="" />
             <BiWorld className="text-4xl flex-1 text-gray-900 cursor-pointer" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white  cursor-pointer">
               Cidrick-PM
             </span>
-          </a>
+          </div>
           <button
             data-collapse-toggle="navbar-solid-bg"
             type="button"
